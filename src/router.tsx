@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Root from './components/Root';
 import Home from "./routes/Home";
 import NotFound from "./routes/NotFound";
+import FundingList from "./routes/FundingList"
 
 const router = createBrowserRouter([{
     path:"/",
@@ -11,6 +12,10 @@ const router = createBrowserRouter([{
         {
             path:"",
             element:<Home />,
+        },
+        {
+            path:"/funding-items",
+            element:<FundingList />,
         },
     ]
 }])
