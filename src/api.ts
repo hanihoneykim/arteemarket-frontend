@@ -8,5 +8,6 @@ export const getBanners = () => instance.get("core/mainpage-banners").then(respo
 
 export const getHomeFundingItems = () => instance.get("core/funding-items?recent=true").then(response => response.data)
 
-export const getFundingItems = () => instance.get("core/funding-items").then(response => response.data)
+export const getFundingItems = (queryParams:any) => instance.get("core/funding-items", { params: queryParams }).then(response => response.data);
+
 

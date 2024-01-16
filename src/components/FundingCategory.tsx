@@ -19,25 +19,25 @@ export default function Category() {
                 <HStack w="80%" h={16} alignItems={"center"} mt={2}>
                     <Text fontSize={18} fontWeight={600}>펀딩</Text>
                     <Text fontSize={18} fontWeight={600} ml={2}>Categories ✨</Text>
-                    <Link to="/funding-item?category=idol">
+                    <Link to="/funding-items/idol">
                         <Text color="rgba(0, 0, 0, 0.5)" fontSize={16} fontWeight={600} ml={8} >아이돌</Text>
                     </Link>
-                    <Link to="/funding-item?category=stationery">
+                    <Link to="/funding-items?category=stationery">
                         <Text color="rgba(0, 0, 0, 0.5)" fontSize={16} fontWeight={600} ml={8} >문구</Text>
                     </Link>
-                    <Link to="/funding-item?category=accessory">
+                    <Link to="/funding-items?category=accessory">
                         <Text color="rgba(0, 0, 0, 0.5)" fontSize={16} fontWeight={600} ml={8} >악세사리</Text>
                     </Link>
-                    <Link to="/funding-item?category=food">
+                    <Link to="/funding-items?category=food">
                         <Text color="rgba(0, 0, 0, 0.5)" fontSize={16} fontWeight={600} ml={8} >푸드</Text>
                     </Link>
-                    <Link to="/funding-item?category=interior">
+                    <Link to="/funding-items?category=interior">
                         <Text color="rgba(0, 0, 0, 0.5)" fontSize={16} fontWeight={600} ml={8} >인테리어</Text>
                     </Link>
-                    <Link to="/funding-item?category=pet">
+                    <Link to="/funding-items?category=pet">
                         <Text color="rgba(0, 0, 0, 0.5)" fontSize={16} fontWeight={600} ml={8} >반려동물</Text>
                     </Link>
-                    <Link to="/funding-item?category=etc">
+                    <Link to="/funding-items?category=etc">
                         <Text color="rgba(0, 0, 0, 0.5)" fontSize={16} fontWeight={600} ml={8} >기타</Text>
                     </Link>
 

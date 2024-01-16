@@ -1,13 +1,14 @@
 import { Alert, AlertIcon, AlertTitle, Box, Flex, Grid, Spinner, Stack, Text } from "@chakra-ui/react";
 import { useQuery } from "@tanstack/react-query"
-import FundingCategory from "../components/FundingCategory";
-import HomeFunding from "../components/HomeFunding";
-import { IFundingItem } from "../types";
-import { getFundingItems } from "../api";
+import FundingCategory from "../../components/FundingCategory";
+import HomeFunding from "../../components/HomeFunding";
+import { IFundingItem } from "../../types";
+import { getFundingItems } from "../../api";
+import { useParams } from "react-router-dom";
 
-export default function FundingList() {
-    const { isLoading, data } = useQuery<IFundingItem[]>(["homeFunding"], getFundingItems);
-    console.log("data:", data)
+const IdolFundingList: React.FC = () => {
+    const { category } = useParams<{ category: string }>();
+    const { isLoading, data } = useQuery<IFundingItem[]>(["IdolFunding", category], () => getFundingItems({ category }));
 
     if (isLoading) {
         return (
@@ -42,3 +43,5 @@ export default function FundingList() {
         </>
     )
 }
+
+export default IdolFundingList;

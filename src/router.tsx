@@ -3,6 +3,7 @@ import Root from './components/Root';
 import Home from "./routes/Home";
 import NotFound from "./routes/NotFound";
 import FundingList from "./routes/FundingList"
+import IdolFundingList from "./routes/category/IdolFundingList";
 
 const router = createBrowserRouter([{
     path:"/",
@@ -14,8 +15,17 @@ const router = createBrowserRouter([{
             element:<Home />,
         },
         {
-            path:"/funding-items",
-            element:<FundingList />,
+            path: "funding-items",
+            children: [
+                {
+                path: "",
+                element: <FundingList />,
+                },
+                {
+                path: ":category",
+                element: <IdolFundingList />,
+                },
+            ],
         },
     ]
 }])
