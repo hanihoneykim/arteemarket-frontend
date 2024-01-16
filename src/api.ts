@@ -5,3 +5,8 @@ const instance = axios.create({
 })
 
 export const getBanners = () => instance.get("core/mainpage-banners").then(response => response.data)
+
+export const getHomeFundingItems = () => instance.get("core/funding-items?recent=true").then(response => response.data)
+
+export const getFundingItems = () => instance.get("core/funding-items").then(response => response.data)
+
