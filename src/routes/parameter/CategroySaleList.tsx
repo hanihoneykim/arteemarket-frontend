@@ -1,13 +1,21 @@
 import { Alert, AlertIcon, AlertTitle, Box, Flex, Grid, Spinner, Stack, Text } from "@chakra-ui/react";
 import { useQuery } from "@tanstack/react-query"
-import SaleCategory from "../components/SaleCategory";
-import HomeSale from "../components/HomeSale";
-import { ISaleItem } from "../types";
-import { getSaleItems } from "../api";
+import SaleCategory from "../../components/SaleCategory";
+import HomeSale from "../../components/HomeSale";
+import { ISaleItem } from "../../types";
+import { getCategorySaleItems } from "../../api";
+import { useParams } from "react-router-dom";
 
-export default function SaleList() {
-    const { isLoading, data } = useQuery<ISaleItem[]>(["SaleList"], getSaleItems);
+const CategorySaleList: React.FC = () => {
+    const { category } = useParams<{ category?: string }>();
+    const decodedSearchKeyword = category ? category.replace("category=", "") : "";
+    const { isLoading, data } = useQuery<ISaleItem[]>(
+        ["CategorySaleList", { search_keyword: decodedSearchKeyword }],
+        () => getCategorySaleItems(decodedSearchKeyword || "")
+    );
 
+    console.log("category data:", data);
+    console.log("category keyword:", decodedSearchKeyword);
 
     if (isLoading) {
         return (
@@ -42,3 +50,5 @@ export default function SaleList() {
         </>
     )
 }
+
+export default CategorySaleList;

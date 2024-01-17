@@ -6,6 +6,7 @@ import FundingList from "./routes/FundingList"
 import IdolFundingList from "./routes/parameter/IdolFundingList";
 import SearchFundingList from "./routes/parameter/SearchFundingList";
 import SaleList from "./routes/SaleList";
+import CategorySaleList from "./routes/parameter/CategroySaleList";
 
 const router = createBrowserRouter([{
     path:"/",
@@ -32,6 +33,11 @@ const router = createBrowserRouter([{
             path: "sale-items",
             element: <SaleList />,
         },
+        {
+            path: "sale-items/:category",
+            element: <CategorySaleList />,
+        },
+        
     ]
 }])
 
