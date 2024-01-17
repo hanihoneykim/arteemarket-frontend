@@ -3,12 +3,19 @@ import { useQuery } from "@tanstack/react-query"
 import FundingCategory from "../../components/FundingCategory";
 import HomeFunding from "../../components/HomeFunding";
 import { IFundingItem } from "../../types";
-import { getFundingItems } from "../../api";
+import { getCategoryFundingItems } from "../../api";
 import { useParams } from "react-router-dom";
 
 const IdolFundingList: React.FC = () => {
-    const { category } = useParams<{ category: string }>();
-    const { isLoading, data } = useQuery<IFundingItem[]>(["IdolFunding", category], () => getFundingItems({ category }));
+    const { category } = useParams<{ category?: string }>();
+    const decodedSearchKeyword = category ? category.replace("category=", "") : "";
+    const { isLoading, data } = useQuery<IFundingItem[]>(
+        ["CategoryFundingList", { search_keyword: decodedSearchKeyword }],
+        () => getCategoryFundingItems(decodedSearchKeyword || "")
+    );
+
+    console.log("category data:", data);
+    console.log("category keyword:", decodedSearchKeyword);
 
     if (isLoading) {
         return (

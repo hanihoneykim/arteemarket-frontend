@@ -18,7 +18,7 @@ export default function Category() {
         }
     
         // 새로운 URL 생성
-        const newPath = `/funding-items/${searchParams.toString()}`;
+        const newPath = `/funding-items/search/${searchParams.toString()}`;
         navigate(newPath);
         console.log("newPath:", newPath);
     };

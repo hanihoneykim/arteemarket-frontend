@@ -17,20 +17,15 @@ const router = createBrowserRouter([{
         },
         {
             path: "funding-items",
-            children: [
-                {
-                path: "",
-                element: <FundingList />,
-                },
-                {
-                path: ":search_keyword",
-                element: <SearchFundingList />,
-                },
-                {
-                path: ":category",
-                element: <IdolFundingList />,
-                },
-            ],
+            element: <FundingList />,
+        },
+        {
+            path: "funding-items/:category",
+            element: <IdolFundingList />,
+        },
+        {
+            path: "funding-items/search/:search_keyword",
+            element: <SearchFundingList />,
         },
     ]
 }])
