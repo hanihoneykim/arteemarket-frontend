@@ -27,4 +27,8 @@ export const getCategorySaleItems = (CategoryKeyword: string) => {
         .then(response => response.data);
 }
 
+export const getSearchSaleItems = (searchKeyword: string) => {
+    return instance.get("core/sale-items/search", { params: { search_keyword: searchKeyword } })
+        .then(response => response.data);
+}
 
