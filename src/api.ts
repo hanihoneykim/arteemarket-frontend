@@ -4,6 +4,8 @@ const instance = axios.create({
     baseURL:"http://127.0.0.1:8000/"
 })
 
+export const getMyProfile = () => instance.get("user/myprofile").then(response => response.data)
+
 export const getBanners = () => instance.get("core/mainpage-banners").then(response => response.data)
 
 export const getHomeFundingItems = () => instance.get("core/funding-items?recent=true").then(response => response.data)

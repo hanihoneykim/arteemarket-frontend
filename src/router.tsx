@@ -8,6 +8,7 @@ import SearchFundingList from "./routes/parameter/SearchFundingList";
 import SaleList from "./routes/SaleList";
 import CategorySaleList from "./routes/parameter/CategroySaleList";
 import SearchSaleList from "./routes/parameter/SearchSaleList";
+import FundingUpload from "./routes/FundingUpload";
 
 const router = createBrowserRouter([{
     path:"/",
@@ -21,6 +22,10 @@ const router = createBrowserRouter([{
         {
             path: "funding-items",
             element: <FundingList />,
+        },
+        {
+            path: "funding-items/upload",
+            element: <FundingUpload />,
         },
         {
             path: "funding-items/:category",
