@@ -29,28 +29,28 @@ export default function Category() {
         <>
             <VStack w="100%" display={"flex"} justifyContent={"center"}>
                 <HStack w="80%" h={16} alignItems={"center"} mt={2}>
-                    <Text fontSize={18} fontWeight={600}>펀딩</Text>
-                    <Text fontSize={18} fontWeight={600} ml={2}>Categories ✨</Text>
+                    <Text fontSize={16} fontWeight={600}>펀딩</Text>
+                    <Text fontSize={16} fontWeight={600} ml={2}>Categories ✨</Text>
                     <Link to="/funding-items/idol">
-                        <Text color="rgba(0, 0, 0, 0.5)" fontSize={16} fontWeight={600} ml={8} >아이돌</Text>
+                        <Text color="rgba(0, 0, 0, 0.5)" fontSize={14} fontWeight={600} ml={6} >아이돌</Text>
                     </Link>
                     <Link to="/funding-items/stationery">
-                        <Text color="rgba(0, 0, 0, 0.5)" fontSize={16} fontWeight={600} ml={8} >문구</Text>
+                        <Text color="rgba(0, 0, 0, 0.5)" fontSize={14} fontWeight={600} ml={6} >문구</Text>
                     </Link>
                     <Link to="/funding-items/accessory">
-                        <Text color="rgba(0, 0, 0, 0.5)" fontSize={16} fontWeight={600} ml={8} >악세사리</Text>
+                        <Text color="rgba(0, 0, 0, 0.5)" fontSize={14} fontWeight={600} ml={6} >악세사리</Text>
                     </Link>
                     <Link to="/funding-items/food">
-                        <Text color="rgba(0, 0, 0, 0.5)" fontSize={16} fontWeight={600} ml={8} >푸드</Text>
+                        <Text color="rgba(0, 0, 0, 0.5)" fontSize={14} fontWeight={600} ml={6} >푸드</Text>
                     </Link>
                     <Link to="/funding-items/interior">
-                        <Text color="rgba(0, 0, 0, 0.5)" fontSize={16} fontWeight={600} ml={8} >인테리어</Text>
+                        <Text color="rgba(0, 0, 0, 0.5)" fontSize={14} fontWeight={600} ml={6} >인테리어</Text>
                     </Link>
                     <Link to="/funding-items/pet">
-                        <Text color="rgba(0, 0, 0, 0.5)" fontSize={16} fontWeight={600} ml={8} >반려동물</Text>
+                        <Text color="rgba(0, 0, 0, 0.5)" fontSize={14} fontWeight={600} ml={6} >반려동물</Text>
                     </Link>
                     <Link to="/funding-items/etc">
-                        <Text color="rgba(0, 0, 0, 0.5)" fontSize={16} fontWeight={600} ml={8} >기타</Text>
+                        <Text color="rgba(0, 0, 0, 0.5)" fontSize={14} fontWeight={600} ml={6} >기타</Text>
                     </Link>
 
                     {/* 여기 */}
@@ -59,15 +59,18 @@ export default function Category() {
                         placeholder="검색어를 입력하세요"
                         value={searchKeyword}
                         onChange={(e) => setSearchKeyword(e.target.value)}
-                        w={56}
+                        w={48}
                         ml={10}
+                        fontSize={14}
                     />
-                    <Button colorScheme="gray" onClick={handleSearch}>
+                    <Button colorScheme="gray" onClick={handleSearch} fontSize={14}>
                         검색
                     </Button>
-                        <Button colorScheme="gray" ml={8}>
+                    <Link to="/funding-items/upload">
+                        <Button colorScheme="gray" ml={8} fontSize={14}>
                             새로운 펀딩 만들기
                         </Button>
+                    </Link>
                 </HStack>
 
 

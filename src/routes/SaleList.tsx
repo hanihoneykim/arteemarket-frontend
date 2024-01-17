@@ -32,7 +32,7 @@ export default function SaleList() {
         <>
         <SaleCategory />
 
-        <Box mb={40} pt={16} pl={24} pr={20} w="100%" h="100%">
+        <Box mb={40} pt={16} pl={20} pr={20} w="100%" h="100%">
             <Grid gap={10} gridAutoFlow={"row"} templateColumns={"repeat(4,1fr)"}>
                 {data && data.map((sale, index) => (
                     <HomeSale id={sale.id} image={sale.image} title={sale.title} price={sale.price} />

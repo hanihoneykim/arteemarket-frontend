@@ -21,7 +21,7 @@ export default function Home() {
             <VStack w="100%" h="100%">
 
                 {/* Banner */}
-                <Box w="80%" h="600px" mt={10}>
+                <Box w="80%" h="550px" mt={10}>
                     <Swiper
                         spaceBetween={50}
                         slidesPerView={1}

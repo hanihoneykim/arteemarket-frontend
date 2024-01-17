@@ -13,8 +13,8 @@ const HomeFunding:React.FC<IFundingItemProps> = ({current_percentage, title, ima
     return (
         <>
         <Link to={`/core/funding-items/${id}`}>
-            <Box w={72} h={96} mx={4}>
-                <Image w={"100%"} h={72} src={image}/>
+            <Box w={64} h={96} mx={4}>
+                <Image w={"100%"} h={64} src={image}/>
                 <Text color="orange.500" fontSize={24} fontWeight={"900"} mt={2}>{current_percentage}% 달성</Text>
                 <Text fontSize={16} fontWeight={"500"} mt={2}>{title}</Text>
             </Box>
