@@ -7,11 +7,23 @@ export default function Category() {
     const [searchKeyword, setSearchKeyword] = useState("");
 
     const handleSearch = () => {
-        // 현재 경로에서 search_keyword 파라미터를 추가하고 새로운 주소로 이동
-        const currentPath = window.location.pathname;
-        const newPath = `${currentPath}?search_keyword=${encodeURIComponent(searchKeyword)}`;
+        // URLSearchParams를 직접 생성하여 search_keyword 파라미터를 추가 또는 삭제
+        const searchParams = new URLSearchParams(window.location.search);
+        console.log("searchKeyword:", searchKeyword)
+    
+        // searchKeyword가 있는 경우에만 search_keyword 파라미터를 추가
+        if (searchKeyword) {
+            // 백엔드에서 원하는 형식으로 파라미터 추가
+            searchParams.set("search_keyword", encodeURIComponent(searchKeyword));
+        }
+    
+        // 새로운 URL 생성
+        const newPath = `/funding-items/${searchParams.toString()}`;
         navigate(newPath);
+        console.log("newPath:", newPath);
     };
+    
+
 
     return (
         <>
@@ -22,22 +34,22 @@ export default function Category() {
                     <Link to="/funding-items/idol">
                         <Text color="rgba(0, 0, 0, 0.5)" fontSize={16} fontWeight={600} ml={8} >아이돌</Text>
                     </Link>
-                    <Link to="/funding-items?category=stationery">
+                    <Link to="/funding-items/stationery">
                         <Text color="rgba(0, 0, 0, 0.5)" fontSize={16} fontWeight={600} ml={8} >문구</Text>
                     </Link>
-                    <Link to="/funding-items?category=accessory">
+                    <Link to="/funding-items/accessory">
                         <Text color="rgba(0, 0, 0, 0.5)" fontSize={16} fontWeight={600} ml={8} >악세사리</Text>
                     </Link>
-                    <Link to="/funding-items?category=food">
+                    <Link to="/funding-items/food">
                         <Text color="rgba(0, 0, 0, 0.5)" fontSize={16} fontWeight={600} ml={8} >푸드</Text>
                     </Link>
-                    <Link to="/funding-items?category=interior">
+                    <Link to="/funding-items/interior">
                         <Text color="rgba(0, 0, 0, 0.5)" fontSize={16} fontWeight={600} ml={8} >인테리어</Text>
                     </Link>
-                    <Link to="/funding-items?category=pet">
+                    <Link to="/funding-items/pet">
                         <Text color="rgba(0, 0, 0, 0.5)" fontSize={16} fontWeight={600} ml={8} >반려동물</Text>
                     </Link>
-                    <Link to="/funding-items?category=etc">
+                    <Link to="/funding-items/etc">
                         <Text color="rgba(0, 0, 0, 0.5)" fontSize={16} fontWeight={600} ml={8} >기타</Text>
                     </Link>
 
