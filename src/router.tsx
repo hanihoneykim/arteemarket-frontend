@@ -5,6 +5,7 @@ import NotFound from "./routes/NotFound";
 import FundingList from "./routes/FundingList"
 import IdolFundingList from "./routes/parameter/IdolFundingList";
 import SearchFundingList from "./routes/parameter/SearchFundingList";
+import SaleList from "./routes/SaleList";
 
 const router = createBrowserRouter([{
     path:"/",
@@ -26,6 +27,10 @@ const router = createBrowserRouter([{
         {
             path: "funding-items/search/:search_keyword",
             element: <SearchFundingList />,
+        },
+        {
+            path: "sale-items",
+            element: <SaleList />,
         },
     ]
 }])

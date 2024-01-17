@@ -20,4 +20,7 @@ export const getCategoryFundingItems = (CategoryKeyword: string) => {
 
 export const getFundingItems = () => instance.get("core/funding-items").then(response => response.data);
 
+export const getSaleItems = () => instance.get("core/sale-items").then(response => response.data);
+
+
 

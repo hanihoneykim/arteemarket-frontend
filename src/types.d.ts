@@ -30,3 +30,17 @@ export interface IFundingItem {
     bank_account_number: string;
     bank_account_owner:string;
 }
+
+export interface ISaleItem {
+    id: string;
+    creator_nickname: string;
+    creator_profile_image: string;
+    title: string;
+    content: string;
+    price: number;
+    image: string;
+    category_name: string;
+    bank_name: string;
+    bank_account_number: string;
+    bank_account_owner:string;
+}
