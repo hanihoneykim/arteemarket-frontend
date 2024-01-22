@@ -34,8 +34,8 @@ export default function Category() {
                     <Link to="/funding-items/idol">
                         <Text color="rgba(0, 0, 0, 0.5)" fontSize={14} fontWeight={600} ml={6} >아이돌</Text>
                     </Link>
-                    <Link to="/funding-items/stationery">
-                        <Text color="rgba(0, 0, 0, 0.5)" fontSize={14} fontWeight={600} ml={6} >문구</Text>
+                    <Link to="/funding-items/subscription">
+                        <Text color="rgba(0, 0, 0, 0.5)" fontSize={14} fontWeight={600} ml={6} >구독</Text>
                     </Link>
                     <Link to="/funding-items/accessory">
                         <Text color="rgba(0, 0, 0, 0.5)" fontSize={14} fontWeight={600} ml={6} >악세사리</Text>

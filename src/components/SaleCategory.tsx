@@ -34,8 +34,8 @@ export default function SaleCategory() {
                     <Link to="/sale-items/idol">
                         <Text color="rgba(0, 0, 0, 0.5)" fontSize={14} fontWeight={600} ml={6} >아이돌</Text>
                     </Link>
-                    <Link to="/sale-items/stationery">
-                        <Text color="rgba(0, 0, 0, 0.5)" fontSize={14} fontWeight={600} ml={6} >문구</Text>
+                    <Link to="/sale-items/subscription">
+                        <Text color="rgba(0, 0, 0, 0.5)" fontSize={14} fontWeight={600} ml={6} >구독</Text>
                     </Link>
                     <Link to="/sale-items/accessory">
                         <Text color="rgba(0, 0, 0, 0.5)" fontSize={14} fontWeight={600} ml={6} >악세사리</Text>
@@ -66,9 +66,11 @@ export default function SaleCategory() {
                     <Button colorScheme="gray" onClick={handleSearch} fontSize={14}>
                         검색
                     </Button>
+                    <Link to="/sale-items/upload">
                         <Button colorScheme="gray" ml={6} fontSize={14}>
                             새로운 프리오더 만들기
                         </Button>
+                    </Link>
                 </HStack>
 
 
