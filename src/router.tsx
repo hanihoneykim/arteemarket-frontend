@@ -14,6 +14,7 @@ import Notice from "./routes/Notice";
 import Event from "./routes/Events";
 import FundingDetail from "./routes/FundingDetail";
 import SaleDetail from "./routes/SaleDetail";
+import NoticeDetail from "./routes/NoticeDetail";
 
 const router = createBrowserRouter([{
     path:"/",
@@ -67,6 +68,10 @@ const router = createBrowserRouter([{
         {
             path: "notices",
             element: <Notice />,
+        },
+        {
+            path: "notices/:noticePk",
+            element: <NoticeDetail />,
         },
         {
             path: "events",

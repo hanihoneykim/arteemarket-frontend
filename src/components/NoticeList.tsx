@@ -10,7 +10,7 @@ interface INoticeProps {
 const NoticeList: React.FC<INoticeProps> = ({ title, id }) => {
     return (
         <>
-        <Link to={`notice/${id}`}>
+        <Link to={`/notices/${id}`}>
             <Card maxW='sm'>
                 <CardBody>
                     <Image
