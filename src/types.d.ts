@@ -59,3 +59,19 @@ export interface INoticeResponse {
     total_pages: number;
     results: INotice[];
 }
+
+export interface IEvent {
+    id: string;
+    title: string;
+    image: string;
+}
+
+export interface IEventResponse {
+    links: {
+        next: string | null;
+        previous: string | null;
+    };
+    count: number;
+    total_pages: number;
+    results: IEvent[];
+}

@@ -11,6 +11,8 @@ import SearchSaleList from "./routes/parameter/SearchSaleList";
 import FundingUpload from "./routes/FundingUpload";
 import SaleUpload from "./routes/SaleUpload";
 import Notice from "./routes/Notice";
+import Event from "./routes/Events";
+import FundingDetail from "./routes/FundingDetail";
 
 const router = createBrowserRouter([{
     path:"/",
@@ -38,6 +40,10 @@ const router = createBrowserRouter([{
             element: <SearchFundingList />,
         },
         {
+            path: "funding-items/:fundingPk",
+            element: <FundingDetail />,
+        },
+        {
             path: "sale-items",
             element: <SaleList />,
         },
@@ -57,6 +63,11 @@ const router = createBrowserRouter([{
             path: "notices",
             element: <Notice />,
         },
+        {
+            path: "events",
+            element: <Event />,
+        },
+        
         
     ]
 }])
