@@ -1,4 +1,5 @@
 import axios from "axios";
+import { QueryFunctionContext } from "@tanstack/react-query";
 
 const instance = axios.create({
     baseURL:"http://127.0.0.1:8000/"
@@ -21,6 +22,11 @@ export const getCategoryFundingItems = (CategoryKeyword: string) => {
 }
 
 export const getFundingItems = () => instance.get("core/funding-items").then(response => response.data);
+
+export const getFundingDetail = ({ queryKey }: QueryFunctionContext) => {
+    const [_, fundingPk] = queryKey;
+    return instance.get(`core/funding-items/${fundingPk}`).then((response) => response.data);
+};
 
 export const getSaleItems = () => instance.get("core/sale-items").then(response => response.data);
 

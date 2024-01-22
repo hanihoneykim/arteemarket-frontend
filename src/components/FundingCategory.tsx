@@ -31,25 +31,25 @@ export default function Category() {
                 <HStack w="80%" h={16} alignItems={"center"} mt={2}>
                     <Text fontSize={16} fontWeight={600}>펀딩</Text>
                     <Text fontSize={16} fontWeight={600} ml={2}>Categories ✨</Text>
-                    <Link to="/funding-items/idol">
+                    <Link to="/funding-items/category/idol">
                         <Text color="rgba(0, 0, 0, 0.5)" fontSize={14} fontWeight={600} ml={6} >아이돌</Text>
                     </Link>
-                    <Link to="/funding-items/subscription">
+                    <Link to="/funding-items/category/subscription">
                         <Text color="rgba(0, 0, 0, 0.5)" fontSize={14} fontWeight={600} ml={6} >구독</Text>
                     </Link>
-                    <Link to="/funding-items/accessory">
+                    <Link to="/funding-items/category/accessory">
                         <Text color="rgba(0, 0, 0, 0.5)" fontSize={14} fontWeight={600} ml={6} >악세사리</Text>
                     </Link>
-                    <Link to="/funding-items/food">
+                    <Link to="/funding-items/category/food">
                         <Text color="rgba(0, 0, 0, 0.5)" fontSize={14} fontWeight={600} ml={6} >푸드</Text>
                     </Link>
-                    <Link to="/funding-items/interior">
+                    <Link to="/funding-items/category/interior">
                         <Text color="rgba(0, 0, 0, 0.5)" fontSize={14} fontWeight={600} ml={6} >인테리어</Text>
                     </Link>
-                    <Link to="/funding-items/pet">
+                    <Link to="/funding-items/category/pet">
                         <Text color="rgba(0, 0, 0, 0.5)" fontSize={14} fontWeight={600} ml={6} >반려동물</Text>
                     </Link>
-                    <Link to="/funding-items/etc">
+                    <Link to="/funding-items/category/etc">
                         <Text color="rgba(0, 0, 0, 0.5)" fontSize={14} fontWeight={600} ml={6} >기타</Text>
                     </Link>
 

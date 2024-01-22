@@ -32,7 +32,7 @@ const router = createBrowserRouter([{
             element: <FundingUpload />,
         },
         {
-            path: "funding-items/:category",
+            path: "funding-items/category/:category",
             element: <IdolFundingList />,
         },
         {
@@ -48,7 +48,7 @@ const router = createBrowserRouter([{
             element: <SaleList />,
         },
         {
-            path: "sale-items/:category",
+            path: "sale-items/category/:category",
             element: <CategorySaleList />,
         },
         {

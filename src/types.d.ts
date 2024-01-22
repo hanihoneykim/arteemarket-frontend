@@ -29,6 +29,7 @@ export interface IFundingItem {
     bank_name: string;
     bank_account_number: string;
     bank_account_owner:string;
+    category_name:string;
 }
 
 export interface ISaleItem {

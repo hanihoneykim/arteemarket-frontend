@@ -31,25 +31,25 @@ export default function SaleCategory() {
                 <HStack w="80%" h={16} alignItems={"center"} mt={2}>
                     <Text fontSize={16} fontWeight={600}>프리오더</Text>
                     <Text fontSize={16} fontWeight={600} ml={2}>Categories ✨</Text>
-                    <Link to="/sale-items/idol">
+                    <Link to="/sale-items/category/idol">
                         <Text color="rgba(0, 0, 0, 0.5)" fontSize={14} fontWeight={600} ml={6} >아이돌</Text>
                     </Link>
-                    <Link to="/sale-items/subscription">
+                    <Link to="/sale-items/category/subscription">
                         <Text color="rgba(0, 0, 0, 0.5)" fontSize={14} fontWeight={600} ml={6} >구독</Text>
                     </Link>
-                    <Link to="/sale-items/accessory">
+                    <Link to="/sale-items/category/accessory">
                         <Text color="rgba(0, 0, 0, 0.5)" fontSize={14} fontWeight={600} ml={6} >악세사리</Text>
                     </Link>
-                    <Link to="/sale-items/food">
+                    <Link to="/sale-items/category/food">
                         <Text color="rgba(0, 0, 0, 0.5)" fontSize={14} fontWeight={600} ml={6} >푸드</Text>
                     </Link>
-                    <Link to="/sale-items/interior">
+                    <Link to="/sale-items/category/interior">
                         <Text color="rgba(0, 0, 0, 0.5)" fontSize={14} fontWeight={600} ml={6} >인테리어</Text>
                     </Link>
-                    <Link to="/sale-items/pet">
+                    <Link to="/sale-items/category/pet">
                         <Text color="rgba(0, 0, 0, 0.5)" fontSize={14} fontWeight={600} ml={6} >반려동물</Text>
                     </Link>
-                    <Link to="/sale-items/etc">
+                    <Link to="/sale-items/category/etc">
                         <Text color="rgba(0, 0, 0, 0.5)" fontSize={14} fontWeight={600} ml={6} >기타</Text>
                     </Link>
 
