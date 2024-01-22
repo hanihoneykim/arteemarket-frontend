@@ -54,3 +54,7 @@ export const getNoticeDetail = ({ queryKey }: QueryFunctionContext) => {
 
 export const getEvent= () => instance.get("core/events").then(response => response.data)
 
+export const getEventDetail = ({ queryKey }: QueryFunctionContext) => {
+    const [_, eventPk] = queryKey;
+    return instance.get(`core/events/${eventPk}`).then((response) => response.data);
+};

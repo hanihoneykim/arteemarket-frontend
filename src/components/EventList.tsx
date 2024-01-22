@@ -11,7 +11,7 @@ interface IEventProps {
 const EventList: React.FC<IEventProps> = ({ title, id, image }) => {
     return (
         <>
-        <Link to={`notice/${id}`}>
+        <Link to={`/events/${id}`}>
             <Card maxW='sm'>
                 <CardBody>
                     <Image
