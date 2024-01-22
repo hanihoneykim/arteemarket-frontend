@@ -20,7 +20,7 @@ export default function Header(){
             <HStack ml={10} justifyContent={"flex-start"} spacing={8}>
                     <Link to={"/"}>
                         <HStack>
-                            <Image w={24} h={20}src="https://artee-s3-bucket.s3.ap-northeast-2.amazonaws.com/artee_logo.jpg" />
+                            <Image w={24} h={20} src="https://artee-s3-bucket.s3.ap-northeast-2.amazonaws.com/artee_logo.jpg" />
                         </HStack>
                     </Link>
                     <HStack px={10}>

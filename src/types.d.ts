@@ -44,3 +44,18 @@ export interface ISaleItem {
     bank_account_number: string;
     bank_account_owner:string;
 }
+
+export interface INotice {
+    id: string;
+    title: string;
+}
+
+export interface INoticeResponse {
+    links: {
+        next: string | null;
+        previous: string | null;
+    };
+    count: number;
+    total_pages: number;
+    results: INotice[];
+}

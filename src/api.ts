@@ -34,3 +34,4 @@ export const getSearchSaleItems = (searchKeyword: string) => {
         .then(response => response.data);
 }
 
+export const getNotice = () => instance.get("core/notices").then(response => response.data)

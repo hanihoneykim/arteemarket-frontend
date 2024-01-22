@@ -9,6 +9,8 @@ import SaleList from "./routes/SaleList";
 import CategorySaleList from "./routes/parameter/CategroySaleList";
 import SearchSaleList from "./routes/parameter/SearchSaleList";
 import FundingUpload from "./routes/FundingUpload";
+import SaleUpload from "./routes/SaleUpload";
+import Notice from "./routes/Notice";
 
 const router = createBrowserRouter([{
     path:"/",
@@ -46,6 +48,14 @@ const router = createBrowserRouter([{
         {
             path: "sale-items/search/:search_keyword",
             element: <SearchSaleList />,
+        },
+        {
+            path: "sale-items/upload",
+            element: <SaleUpload />,
+        },
+        {
+            path: "notices",
+            element: <Notice />,
         },
         
     ]

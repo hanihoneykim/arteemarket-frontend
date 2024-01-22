@@ -41,7 +41,7 @@ interface IForm {
     bank_account_owner:string;
 }
 
-export default function FundingUpload() {
+export default function SaleUpload() {
     const { register, handleSubmit, watch, reset } = useForm<IForm>()
     const toast = useToast();
     const { user, isLoggedIn, userLoading } = useUser();
@@ -53,7 +53,7 @@ export default function FundingUpload() {
         <ProtectedPage>
             <Box pb={40} pt={16} w="100%" display={"flex"} justifyContent={"center"}>
                 <VStack as="form" spacing={10} mt={5} w="80%" h="100%" align="start">
-                    <Text color="orange" fontSize={20} fontWeight={600}>➊ 펀딩에 대해 설명해주세요!</Text>
+                    <Text color="orange" fontSize={20} fontWeight={600}>➊ 프리오더 제품에 대해 설명해주세요!</Text>
                     <Divider />
                     <FormControl>
                     <FormControl>
@@ -83,17 +83,7 @@ export default function FundingUpload() {
                         <FormLabel>가격</FormLabel>
                         <Input {...register("price",{required:true})} required type="text" w="100%" mb={10}/>
                     </FormControl>
-                    <Text color="orange" fontSize={20} fontWeight={600}>➋ 펀딩 일정에 대해 설명해주세요!</Text>
-                    <Divider />
-                    <FormControl>
-                        <FormLabel>목표 금액</FormLabel>
-                        <Input {...register("title",{required:true})} required type="text" w="100%"/>
-                    </FormControl>
-                    <FormControl>
-                        <FormLabel>마감 날짜</FormLabel>
-                        <Input placeholder="날짜를 선택해주세요." size="md" type="datetime-local" mb={10}/>
-                    </FormControl>
-                    <Text color="orange" fontSize={20} fontWeight={600}>➌ 입금 받으실 정보를 입력해 주세요!</Text>
+                    <Text color="orange" fontSize={20} fontWeight={600}>➋ 입금 받으실 정보를 입력해 주세요!</Text>
                     <Divider />
                     <FormControl>
                         <FormLabel>은행명</FormLabel>
@@ -109,7 +99,7 @@ export default function FundingUpload() {
                     </FormControl>
 
                     <Button type="submit" w="full" colorScheme={"gray"}  mt={16}>
-                        새로운 펀딩 업로드하기
+                        새로운 프리오더 업로드하기
                     </Button>
                 </VStack>
             </Box>
