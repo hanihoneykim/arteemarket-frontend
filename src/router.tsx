@@ -16,6 +16,7 @@ import FundingDetail from "./routes/FundingDetail";
 import SaleDetail from "./routes/SaleDetail";
 import NoticeDetail from "./routes/NoticeDetail";
 import EventDetail from "./routes/EventDetail";
+import Login from "./routes/Login";
 
 const router = createBrowserRouter([{
     path:"/",
@@ -82,7 +83,10 @@ const router = createBrowserRouter([{
             path: "events/:eventPk",
             element: <EventDetail />,
         },
-        
+        {
+            path:"login",
+            element:<Login />,
+        },
         
     ]
 }])
