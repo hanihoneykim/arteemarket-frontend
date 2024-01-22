@@ -22,7 +22,7 @@ export default function NoticeDetail() {
                 <Divider color="rgba(0,0,0,0.1)"/>
                 <CardBody>
                     <Box>
-                        <Text pt='2' fontSize='sm'>
+                        <Text pt='2' fontSize='md'>
                         {data?.content}
                         </Text>
                     </Box>
