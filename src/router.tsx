@@ -13,6 +13,7 @@ import SaleUpload from "./routes/SaleUpload";
 import Notice from "./routes/Notice";
 import Event from "./routes/Events";
 import FundingDetail from "./routes/FundingDetail";
+import SaleDetail from "./routes/SaleDetail";
 
 const router = createBrowserRouter([{
     path:"/",
@@ -58,6 +59,10 @@ const router = createBrowserRouter([{
         {
             path: "sale-items/upload",
             element: <SaleUpload />,
+        },
+        {
+            path: "sale-items/:salePk",
+            element: <SaleDetail />,
         },
         {
             path: "notices",
