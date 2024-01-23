@@ -1,11 +1,53 @@
 import axios from "axios";
+import Cookie from "js-cookie";
 import { QueryFunctionContext } from "@tanstack/react-query";
 
 const instance = axios.create({
-    baseURL:"http://127.0.0.1:8000/"
+    baseURL:"http://127.0.0.1:8000/",
 })
 
+instance.defaults.headers.common['Authorization'] = `Bearer ${Cookie.get("token") || ""}`;
+
 export const getMyProfile = () => instance.get("user/myprofile").then(response => response.data)
+
+export interface IEmailLoginVariables {
+    email: string;
+    password: string;
+    }
+    export interface IEmailLoginSuccess {
+        ok: string;
+    }
+    export interface IEmailLoginError {
+        error: string;
+    }
+    
+export const emailLogIn = ({ email, password }: IEmailLoginVariables) =>
+    instance.post(
+        `user/login`,
+        { email, password },
+        {
+        headers: {
+            "X-CSRFToken": Cookie.get("csrftoken") || "",
+            "Content-Type": "application/json",
+        },
+        }
+    ).then(response => {
+        // 로그인 성공 시에 얻은 토큰을 저장
+        const token = response.data.token;
+        Cookie.set("token", token);
+        console.log(Cookie.get("token"))
+        console.log("response.data:", response.data)
+        return response.data;
+    });
+
+export const logOut = () =>
+    instance
+        .post(`user/logout`, null, {
+        headers: {
+            "X-CSRFToken": Cookie.get("csrftoken") || "",
+        },
+        })
+        .then((response) => response.data);
 
 export const getBanners = () => instance.get("core/mainpage-banners").then(response => response.data)
 

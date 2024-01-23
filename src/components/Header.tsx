@@ -1,20 +1,70 @@
-import { HiNewspaper } from "react-icons/hi"
-import { FaMoon, FaSun } from "react-icons/fa";
+import Cookie from "js-cookie";
+import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import {
+    Avatar,
     Box,
     Button,
     HStack,
     IconButton,
     Image,
+    Menu,
+    MenuButton,
+    MenuItem,
+    MenuList,
     Text,
+    ToastId,
     useColorMode,
     useColorModeValue,
+    useDisclosure,
+    useToast,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import useUser from "../lib/useUser";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useRef } from "react";
+import { logOut } from "../api";
 
 
 export default function Header(){
-
+    const { userLoading, isLoggedIn, user } = useUser();
+    const toast = useToast();
+    const queryClient = useQueryClient();
+    const toastId = useRef<ToastId>();
+    const navigate = useNavigate();
+    const [isUserLoggedIn, setUserLoggedIn] = useState<boolean>(false);
+    useEffect(() => {
+        // localStorage에서 로그인 상태 확인
+        const storedUserLoggedIn = localStorage.getItem("isUserLoggedIn");
+        setUserLoggedIn(Boolean(storedUserLoggedIn));
+    }, []);
+    const mutation = useMutation(logOut, {
+        onMutate: () => {
+            toastId.current = toast({
+                title: "로그아웃 중",
+                description: "다음에 다시 방문해주세요",
+                status: "loading",
+                duration: 10000,
+                position: "bottom-right",
+            });
+        },
+        onSuccess: () => {
+            if (toastId.current) {
+                Cookie.remove("token");
+                localStorage.removeItem("isUserLoggedIn");
+                queryClient.refetchQueries(["me"]);
+                toast.update(toastId.current, {
+                    status: "success",
+                    title: "로그아웃 완료",
+                    description: "다음에 다시 만나요!",
+                });
+                navigate("/");
+            }
+        },
+    });
+    const onLogOut = async () => {
+        mutation.mutate();
+    };
     return (
         <HStack justifyContent={"space-between"} p={6} px={20} borderBottomWidth={1}>
             <HStack ml={10} justifyContent={"flex-start"} spacing={8}>
@@ -39,12 +89,27 @@ export default function Header(){
                     </HStack>
             </HStack>
             <HStack justifyContent={"flex-end"} mr={10} >
-                <Link to={"/login"}>
-                    <Text fontSize={20}>로그인</Text>
-                </Link>
-                <Link to={"/signup"}>
-                    <Text ml={10} fontSize={20}>회원가입</Text>
-                </Link>
+                {!userLoading ? (
+                    !isLoggedIn ? (
+                        <>
+                        <Link to={"/login"}>
+                            <Text fontSize={20}>로그인</Text>
+                        </Link>
+                        <Link to={"/signup"}>
+                            <Text ml={10} fontSize={20}>회원가입</Text>
+                        </Link>
+                        </>
+                    ) : (
+                        <Menu>
+                            <MenuButton>
+                                <Avatar name={user?.name} src={user?.profile_image} size={"md"} />
+                            </MenuButton>
+                            <MenuList>
+                                <MenuItem onClick={onLogOut}>로그아웃</MenuItem>
+                            </MenuList>
+                            </Menu>
+                    )
+                ) : null}
             </HStack>
 
         </HStack>

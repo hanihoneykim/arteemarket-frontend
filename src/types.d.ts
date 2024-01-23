@@ -78,3 +78,15 @@ export interface IEventResponse {
     total_pages: number;
     results: IEvent[];
 }
+
+export interface IUser {
+    nickname: string;
+    email: string;
+    profile_image: string;
+    name: string;
+    phone_number: number;
+    is_admin: boolean;
+    is_staff: boolean;
+    is_superuser: boolean;
+    date_joined: string;
+}
