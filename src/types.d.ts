@@ -29,7 +29,6 @@ export interface IFundingItem {
     bank_name: string;
     bank_account_number: string;
     bank_account_owner:string;
-    category_name:string;
 }
 
 export interface ISaleItem {
@@ -89,4 +88,20 @@ export interface IUser {
     is_staff: boolean;
     is_superuser: boolean;
     date_joined: string;
+}
+
+export interface IParticipant {
+    id: string;
+    creator_nickname: string;
+    creator_profile_image: string;
+    title: string;
+    content: string;
+    price: number;
+    goal_amount: number;
+    end_date: string;
+    image: string;
+    category_name: string;
+    bank_name: string;
+    bank_account_number: string;
+    bank_account_owner:string;
 }

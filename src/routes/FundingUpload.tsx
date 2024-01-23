@@ -24,6 +24,8 @@ import { useForm } from "react-hook-form";
 import { FaRegUser } from "react-icons/fa";
 import { useMutation } from "@tanstack/react-query";
 import FundingCategory from "../components/FundingCategory";
+import { IUploadFundingVariables, uploadFunding } from "../api";
+import { IFundingItem } from "../types";
 
 interface IForm {
     id: string;
@@ -44,7 +46,21 @@ interface IForm {
 export default function FundingUpload() {
     const { register, handleSubmit, watch, reset } = useForm<IForm>()
     const toast = useToast();
+    const navigate = useNavigate();
     const { user, isLoggedIn, userLoading } = useUser();
+    const mutation = useMutation(uploadFunding, {
+        onSuccess: (data: IFundingItem) => {
+            toast({
+                status: "success",
+                title: "펀딩이 생성되었습니다.",
+                position: "bottom-right",
+            });
+            navigate(`/funding-items/${data.id}`);
+            },
+        });
+        const onSubmit = (data: IUploadFundingVariables) => {
+            mutation.mutate(data);
+        };
 
 
     return (
@@ -52,7 +68,7 @@ export default function FundingUpload() {
         <FundingCategory />
         <ProtectedPage>
             <Box pb={40} pt={16} w="100%" display={"flex"} justifyContent={"center"}>
-                <VStack as="form" spacing={10} mt={5} w="80%" h="100%" align="start">
+                <VStack as="form" spacing={10} mt={5} w="80%" h="100%" align="start" onSubmit={handleSubmit(onSubmit)}>
                     <Text color="orange" fontSize={20} fontWeight={600}>➊ 펀딩에 대해 설명해주세요!</Text>
                     <Divider />
                     <FormControl>
@@ -69,7 +85,7 @@ export default function FundingUpload() {
                     </FormControl>
                     <FormControl>
                         <FormLabel>카테고리</FormLabel>
-                        <Select placeholder='Select country'>
+                        <Select placeholder='카테고리를 선택하세요' {...register("category_name")}>
                             <option>아이돌</option>
                             <option>구독상품</option>
                             <option>악세사리</option>
@@ -87,7 +103,7 @@ export default function FundingUpload() {
                     <Divider />
                     <FormControl>
                         <FormLabel>목표 금액</FormLabel>
-                        <Input {...register("title",{required:true})} required type="text" w="100%"/>
+                        <Input {...register("goal_amount",{required:true})} required type="text" w="100%"/>
                     </FormControl>
                     <FormControl>
                         <FormLabel>마감 날짜</FormLabel>
@@ -108,6 +124,9 @@ export default function FundingUpload() {
                         <Input {...register("bank_account_number",{required:true})} required type="text" w="100%"/>
                     </FormControl>
 
+                    {mutation.isError ? (
+                    <Text color="red.500">문제가 발생했습니다.</Text>
+                    ) : null}
                     <Button type="submit" w="full" colorScheme={"gray"}  mt={16}>
                         새로운 펀딩 업로드하기
                     </Button>

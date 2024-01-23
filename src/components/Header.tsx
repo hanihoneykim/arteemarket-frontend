@@ -105,6 +105,9 @@ export default function Header(){
                                 <Avatar name={user?.name} src={user?.profile_image} size={"md"} />
                             </MenuButton>
                             <MenuList>
+                                <Link to={"/mypage"}>
+                                    <MenuItem>마이페이지</MenuItem>
+                                </Link>
                                 <MenuItem onClick={onLogOut}>로그아웃</MenuItem>
                             </MenuList>
                             </Menu>

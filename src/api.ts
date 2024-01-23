@@ -100,3 +100,54 @@ export const getEventDetail = ({ queryKey }: QueryFunctionContext) => {
     const [_, eventPk] = queryKey;
     return instance.get(`core/events/${eventPk}`).then((response) => response.data);
 };
+
+export interface IUploadParicipantsVariables {
+    id: string;
+    creator_nickname: string;
+    creator_profile_image: string;
+    title: string;
+    content: string;
+    price: number;
+    goal_amount: number;
+    end_date: string;
+    image: string;
+    category_name: string;
+    bank_name: string;
+    bank_account_number: string;
+    bank_account_owner:string;
+}
+
+export const uploadParticipants = (variables: IUploadParicipantsVariables, { queryKey }: QueryFunctionContext) => {
+    const [_, fundingPk] = queryKey;
+    return instance
+        .post(`funding-items/${fundingPk}/participants/`, variables, {
+        headers: {
+            "X-CSRFToken": Cookie.get("csrftoken") || "",
+        },
+        })
+        .then((response) => response.data);
+}
+
+export interface IUploadFundingVariables {
+    title: string;
+    content: string;
+    price: number;
+    goal_amount: number;
+    end_date: string;
+    image: string;
+    category_name: string;
+    bank_name: string;
+    bank_account_number: string;
+    bank_account_owner:string;
+}
+
+export const uploadFunding = (variables: IUploadFundingVariables) => {
+    return instance
+        .post(`core/funding-items`, variables, {
+        headers: {
+            "X-CSRFToken": Cookie.get("csrftoken") || "",
+            'Content-Type': 'multipart/form-data',
+        },
+        })
+        .then((response) => response.data);
+}
