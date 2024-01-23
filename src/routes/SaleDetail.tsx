@@ -4,6 +4,8 @@ import { ISaleItem } from "../types";
 import { useQuery } from "@tanstack/react-query";
 import { getSaleDetail } from "../api";
 import React from "react";
+import { Link } from "react-router-dom";
+
 
 export default function SaleDetail() {
     const { salePk } = useParams();
@@ -13,8 +15,8 @@ export default function SaleDetail() {
         <Box mb={40} w="100%" h="100%" px={24} my={20}>
             <HStack w="100%" h="100%" display={"flex"}>
                 <VStack id="mainBox" w="60%" h="100%" justifyContent={"flex-start"} align={"start"} position="relative">
-                    <Image w={"100%"} h={"500px"} src={data?.image} />
-                    <Text mt={10} fontSize={16} fontWeight={"500"} mb={10}>
+                    <Image objectFit={"cover"} w={"100%"} h={"500px"} src={data?.image} />
+                    <Text mt={10} fontSize={16} fontWeight={"500"} mb={56}>
                         {data?.content.split('\n').map((line, index) => (
                             <React.Fragment key={index}>
                                 {line}
@@ -24,7 +26,7 @@ export default function SaleDetail() {
                     </Text>
                     
                 </VStack>
-                <VStack id="sideBox" w="32%" h="100%" align={"start"} position="absolute" right={0} mr={20} mt={"450px"}>
+                <VStack id="sideBox" w="32%" h="300px" align={"start"} position="absolute" right={50} top={200}>
                     <Box w="100%" h="100%">
                         <Text fontSize={14} fontWeight={"500"} mb={4}>프리오더 ⟫ {data?.category_name}</Text>
                         <Divider />
@@ -51,9 +53,11 @@ export default function SaleDetail() {
                             </CardBody>
                             <Divider color="rgba(0,0,0,0.1)" />
                             <CardFooter>
-                                <Button w="100%" h="14" variant='solid' colorScheme='orange' fontWeight={"900"} fontSize={"18"}>
-                                    구입하기
-                                </Button>
+                                <Link to={`/sale-items/${salePk}/purchases`} >
+                                        <Button w="420px" h="14" variant='solid' colorScheme='orange' fontWeight={"900"} fontSize={"18"}>
+                                            구입하기
+                                        </Button>
+                                </Link>
                             </CardFooter>
                         </Card>
                     </Box>
