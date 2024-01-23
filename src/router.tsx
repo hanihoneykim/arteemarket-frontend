@@ -17,6 +17,9 @@ import SaleDetail from "./routes/SaleDetail";
 import NoticeDetail from "./routes/NoticeDetail";
 import EventDetail from "./routes/EventDetail";
 import Login from "./routes/Login";
+import SignUp from "./routes/SignUp";
+import Participant from "./routes/Participant";
+import Purchase from "./routes/Purchase";
 
 const router = createBrowserRouter([{
     path:"/",
@@ -48,6 +51,10 @@ const router = createBrowserRouter([{
             element: <FundingDetail />,
         },
         {
+            path: "funding-items/:fundingPk/participants",
+            element: <Participant />,
+        },
+        {
             path: "sale-items",
             element: <SaleList />,
         },
@@ -68,6 +75,10 @@ const router = createBrowserRouter([{
             element: <SaleDetail />,
         },
         {
+            path: "sale-items/:salePk/purchases",
+            element: <Purchase />,
+        },
+        {
             path: "notices",
             element: <Notice />,
         },
@@ -86,6 +97,10 @@ const router = createBrowserRouter([{
         {
             path:"login",
             element:<Login />,
+        },
+        {
+            path:"signup",
+            element:<SignUp />,
         },
         
     ]

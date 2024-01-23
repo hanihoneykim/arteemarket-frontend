@@ -8,7 +8,7 @@ export default function Root(){
     return (
     <Box>
         <Header />
-        <Outlet/>
+        <Outlet />
         <Footer />
     </Box>
     )
