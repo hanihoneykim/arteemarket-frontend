@@ -25,7 +25,7 @@ export interface IFundingItem {
     goal_amount: number;
     end_date: string;
     image: string;
-    category_name: string;
+    category: string;
     bank_name: string;
     bank_account_number: string;
     bank_account_owner:string;

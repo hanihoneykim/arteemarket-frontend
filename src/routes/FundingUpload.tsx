@@ -36,20 +36,23 @@ interface IForm {
     price: number;
     goal_amount: number;
     end_date: string;
-    image: string;
-    category_name: string;
+    image: FileList | null;
+    category: string;
     bank_name: string;
     bank_account_number: string;
     bank_account_owner:string;
 }
 
 export default function FundingUpload() {
-    const { register, handleSubmit, watch, reset } = useForm<IForm>()
+    const { register, handleSubmit, watch, reset, setValue } = useForm<IForm>()
     const toast = useToast();
     const navigate = useNavigate();
     const { user, isLoggedIn, userLoading } = useUser();
     const mutation = useMutation(uploadFunding, {
         onSuccess: (data: IFundingItem) => {
+            console.log("data:", data)
+            console.log(watch("category"))
+            console.log(watch("end_date"))
             toast({
                 status: "success",
                 title: "펀딩이 생성되었습니다.",
@@ -59,6 +62,8 @@ export default function FundingUpload() {
             },
         });
         const onSubmit = (data: IUploadFundingVariables) => {
+            const isoDate = new Date(data.end_date).toISOString();
+            setValue("end_date", isoDate);
             mutation.mutate(data);
         };
 
@@ -85,14 +90,14 @@ export default function FundingUpload() {
                     </FormControl>
                     <FormControl>
                         <FormLabel>카테고리</FormLabel>
-                        <Select placeholder='카테고리를 선택하세요' {...register("category_name")}>
-                            <option>아이돌</option>
-                            <option>구독상품</option>
-                            <option>악세사리</option>
-                            <option>푸드</option>
-                            <option>인테리어</option>
-                            <option>반려동물</option>
-                            <option>기타</option>
+                        <Select placeholder='카테고리를 선택하세요' {...register("category")}>
+                            <option value="idol">아이돌</option>
+                            <option value="subscription">구독상품</option>
+                            <option value="accessory">악세사리</option>
+                            <option value="food">푸드</option>
+                            <option value="interior">인테리어</option>
+                            <option value="pet">반려동물</option>
+                            <option value="etc">기타</option>
                         </Select>
                     </FormControl>
                     <FormControl>
@@ -107,7 +112,14 @@ export default function FundingUpload() {
                     </FormControl>
                     <FormControl>
                         <FormLabel>마감 날짜</FormLabel>
-                        <Input placeholder="날짜를 선택해주세요." size="md" type="datetime-local" mb={10}/>
+                        <Input
+                                placeholder="날짜를 선택해주세요."
+                                size="md"
+                                type="datetime-local"
+                                mb={10}
+                                value={watch("end_date") || ""}
+                                {...register("end_date", { required: true })}
+                            />
                     </FormControl>
                     <Text color="orange" fontSize={20} fontWeight={600}>➌ 입금 받으실 정보를 입력해 주세요!</Text>
                     <Divider />
@@ -121,7 +133,7 @@ export default function FundingUpload() {
                     </FormControl>
                     <FormControl>
                         <FormLabel>입금 받으실 분 성함</FormLabel>
-                        <Input {...register("bank_account_number",{required:true})} required type="text" w="100%"/>
+                        <Input {...register("bank_account_owner",{required:true})} required type="text" w="100%"/>
                     </FormControl>
 
                     {mutation.isError ? (

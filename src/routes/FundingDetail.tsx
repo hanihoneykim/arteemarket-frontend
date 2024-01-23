@@ -28,7 +28,7 @@ export default function FundingDetail() {
                 </VStack>
                 <VStack id="sideBox" w="32%" h="300px" align={"start"} position="absolute" right={50} top={200}>
                     <Box w="100%" h="100%">
-                        <Text fontSize={14} fontWeight={"500"} mb={4}>펀딩 ⟫ {data?.category_name}</Text>
+                        <Text fontSize={14} fontWeight={"500"} mb={4}>펀딩 ⟫ {data?.category}</Text>
                         <Divider />
 
                         <Text fontSize={20} fontWeight={"900"} my={6}>{data?.title}</Text>

@@ -134,6 +134,46 @@ export interface IUploadFundingVariables {
     price: number;
     goal_amount: number;
     end_date: string;
+    image: FileList | null;
+    category: string;
+    bank_name: string;
+    bank_account_number: string;
+    bank_account_owner:string;
+}
+
+export const uploadFunding = (data: IUploadFundingVariables) => {
+    const formData = new FormData();
+
+    formData.append("title", data.title);
+    formData.append("content", data.content);
+    formData.append("price", data.price.toString());
+    formData.append("goal_amount", data.goal_amount.toString());
+    formData.append("end_date", data.end_date);
+    formData.append("category", data.category);
+    formData.append("bank_name", data.bank_name);
+    formData.append("bank_account_number", data.bank_account_number);
+    formData.append("bank_account_owner", data.bank_account_owner);
+
+    if (data.image) {
+        formData.append("image", data.image[0]);
+    }
+    console.log("formData:", formData)
+
+    return instance
+        .post(`core/funding-items`, formData, {
+        headers: {
+            "X-CSRFToken": Cookie.get("csrftoken") || "",
+            'Content-Type': 'multipart/form-data',
+        },
+        })
+        .then((response) => response.data);
+}
+
+
+export interface IUploadSaleVariables {
+    title: string;
+    content: string;
+    price: number;
     image: string;
     category_name: string;
     bank_name: string;
@@ -141,9 +181,9 @@ export interface IUploadFundingVariables {
     bank_account_owner:string;
 }
 
-export const uploadFunding = (variables: IUploadFundingVariables) => {
+export const uploadSale = (variables: IUploadSaleVariables) => {
     return instance
-        .post(`core/funding-items`, variables, {
+        .post(`core/sale-items`, variables, {
         headers: {
             "X-CSRFToken": Cookie.get("csrftoken") || "",
             'Content-Type': 'multipart/form-data',
