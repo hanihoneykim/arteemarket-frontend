@@ -109,3 +109,21 @@ export interface IParticipant {
     updated_at: string;
 
 }
+
+export interface IPurchase {
+    id: string;
+    creator_nickname: string;
+    creator_profile_image: string;
+    title: string;
+    content: string;
+    price: number;
+    goal_amount: number;
+    end_date: string;
+    image: string;
+    category_name: string;
+    bank_name: string;
+    bank_account_number: string;
+    bank_account_owner:string;
+    fundingPk : string;
+
+}

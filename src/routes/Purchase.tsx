@@ -21,6 +21,10 @@ import useUser from "../lib/useUser";
 import { useForm } from "react-hook-form";
 
 import FundingCategory from "../components/FundingCategory";
+import { useNavigate, useParams } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
+import { IUploadPurchasesVariables, uploadPurchases } from "../api";
+import { IPurchase } from "../types";
 
 interface IForm {
     id: string;
@@ -32,17 +36,38 @@ interface IForm {
     shipping_phone_number : number;
     shipping_address1 : string;
     shipping_zipcode : number;
+    sale_item : string;
+    salePk : string;
 }
 
 export default function Purchase() {
+    const { salePk } = useParams();
     const { register, handleSubmit, watch, reset } = useForm<IForm>()
     const toast = useToast();
     const { user, isLoggedIn, userLoading } = useUser();
     const isPaidValue = watch("is_paid");
+    const navigate = useNavigate();
+    const mutation = useMutation(uploadPurchases, {
+        onSuccess: (data: IPurchase) => {
+            toast({
+                status: "success",
+                title: "펀딩 신청이 완료되었습니다.",
+                position: "bottom-right",
+            });
+            if (salePk) { // salePk가 존재하는 경우에만 navigate 호출
+                navigate(`/sale-items/${salePk}`);
+            }
+        },
+    });
 
-    const onSubmit = (data: IForm) => {
+    // ...
+
+    const onSubmit = (data: IUploadPurchasesVariables) => {
         // <Select> 컴포넌트에서 선택한 값에 따라 is_paid를 설정합니다.
+        console.log("data:", data);
         data.is_paid = isPaidValue as boolean;
+        data.sale_item = salePk || '';
+        console.log("!data.is_paid:", !data.is_paid)
 
         // is_paid가 false인 경우 Toast를 표시하고 제출을 중단합니다.
         if (!data.is_paid) {
@@ -52,7 +77,20 @@ export default function Purchase() {
                 duration: 5000,
                 isClosable: true,
             });
-            return;
+        } else {
+            // fundingPk가 정의된 경우에만 mutation 호출
+            mutation.mutate(data, {
+                onError: (error) => {
+                        toast({
+                            title: "무통장 입금 후 펀딩을 신청해주세요",
+                            status: "error",
+                            duration: 5000,
+                            isClosable: true,
+                        });
+                    }
+                },
+            )
+        
         }
     }
 
@@ -62,7 +100,7 @@ export default function Purchase() {
         <FundingCategory />
         <ProtectedPage>
             <Box pb={40} pt={16} w="100%" display={"flex"} justifyContent={"center"}>
-                <VStack as="form" spacing={10} mt={5} w="80%" h="100%" align="start">
+                <VStack as="form" spacing={10} mt={5} w="80%" h="100%" align="start" onSubmit={handleSubmit(onSubmit)}>
                     <Text color="orange" fontSize={20} fontWeight={600}>➊ 펀딩 신청 전 입금 여부 확인 해주세요!</Text>
                     <Divider />
                     <FormControl>

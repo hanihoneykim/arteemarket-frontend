@@ -45,7 +45,6 @@ interface IForm {
 
 export default function Participant() {
     const { fundingPk } = useParams();
-    console.log("fundingPk:", fundingPk)
     const { register, handleSubmit, watch, reset } = useForm<IForm>()
     const toast = useToast();
     const { user, isLoggedIn, userLoading } = useUser();
@@ -82,7 +81,17 @@ export default function Participant() {
             });
         } else {
             // fundingPk가 정의된 경우에만 mutation 호출
-            mutation.mutate(data);
+            mutation.mutate(data, {
+                onError: (error) => {
+                        toast({
+                            title: "무통장 입금 후 펀딩을 신청해주세요",
+                            status: "error",
+                            duration: 5000,
+                            isClosable: true,
+                        });
+                    }
+                },
+            )
         }
     }
 

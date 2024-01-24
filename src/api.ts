@@ -131,6 +131,31 @@ export const uploadParticipants = (variables: IUploadParicipantsVariables) => {
         .then((response) => response.data);
 }
 
+export interface IUploadPurchasesVariables {
+    id: string;
+    is_paid: boolean | string;
+    payment_name : string;
+    name : string;
+    phone_number : number;
+    shipping_name : string;
+    shipping_phone_number : number;
+    shipping_address1 : string;
+    shipping_zipcode : number;
+    sale_item : string;
+    salePk? : string;
+}
+
+export const uploadPurchases = (variables: IUploadPurchasesVariables) => {
+    
+    return instance
+        .post(`core/sale-items/${variables.sale_item}/purchases`, variables, {
+        headers: {
+            "X-CSRFToken": Cookie.get("csrftoken") || "",
+        },
+        })
+        .then((response) => response.data);
+}
+
 
 export interface IUploadFundingVariables {
     title: string;
