@@ -21,6 +21,11 @@ import useUser from "../lib/useUser";
 import { useForm } from "react-hook-form";
 
 import FundingCategory from "../components/FundingCategory";
+import { useNavigate, useParams } from "react-router-dom";
+import { useMutation } from "@tanstack/react-query";
+import { IParticipant } from "../types";
+import { IUploadParicipantsVariables, uploadParticipants } from "../api";
+import { useEffect } from "react";
 
 interface IForm {
     id: string;
@@ -32,17 +37,40 @@ interface IForm {
     shipping_phone_number : number;
     shipping_address1 : string;
     shipping_zipcode : number;
+    funding_item : string;
+    fundingPk : string;
+    created_at: string;
+    updated_at: string;
 }
 
 export default function Participant() {
+    const { fundingPk } = useParams();
+    console.log("fundingPk:", fundingPk)
     const { register, handleSubmit, watch, reset } = useForm<IForm>()
     const toast = useToast();
     const { user, isLoggedIn, userLoading } = useUser();
     const isPaidValue = watch("is_paid");
+    const navigate = useNavigate();
+    const mutation = useMutation(uploadParticipants, {
+        onSuccess: (data: IParticipant) => {
+            toast({
+                status: "success",
+                title: "펀딩 신청이 완료되었습니다.",
+                position: "bottom-right",
+            });
+            if (fundingPk) { // fundingPk가 존재하는 경우에만 navigate 호출
+                navigate(`/funding-items/${fundingPk}`);
+            }
+        },
+    });
 
-    const onSubmit = (data: IForm) => {
+    // ...
+
+    const onSubmit = (data: IUploadParicipantsVariables) => {
         // <Select> 컴포넌트에서 선택한 값에 따라 is_paid를 설정합니다.
+        console.log("data:", data);
         data.is_paid = isPaidValue as boolean;
+        data.funding_item = fundingPk || '';
 
         // is_paid가 false인 경우 Toast를 표시하고 제출을 중단합니다.
         if (!data.is_paid) {
@@ -52,9 +80,14 @@ export default function Participant() {
                 duration: 5000,
                 isClosable: true,
             });
-            return;
+        } else {
+            // fundingPk가 정의된 경우에만 mutation 호출
+            mutation.mutate(data);
         }
     }
+
+    
+    
 
 
     return (
@@ -62,7 +95,7 @@ export default function Participant() {
         <FundingCategory />
         <ProtectedPage>
             <Box pb={40} pt={16} w="100%" display={"flex"} justifyContent={"center"}>
-                <VStack as="form" spacing={10} mt={5} w="80%" h="100%" align="start">
+                <VStack as="form" spacing={10} mt={5} w="80%" h="100%" align="start" onSubmit={handleSubmit(onSubmit)}>
                     <Text color="orange" fontSize={20} fontWeight={600}>➊ 펀딩 신청 전 입금 여부 확인 해주세요!</Text>
                     <Divider />
                     <FormControl>

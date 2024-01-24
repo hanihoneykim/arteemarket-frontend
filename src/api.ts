@@ -1,6 +1,7 @@
 import axios from "axios";
 import Cookie from "js-cookie";
-import { QueryFunctionContext } from "@tanstack/react-query";
+import { MutationFunction, QueryFunctionContext } from "@tanstack/react-query";
+import { IParticipant } from "./types";
 
 const instance = axios.create({
     baseURL:"http://127.0.0.1:8000/",
@@ -103,30 +104,33 @@ export const getEventDetail = ({ queryKey }: QueryFunctionContext) => {
 
 export interface IUploadParicipantsVariables {
     id: string;
-    creator_nickname: string;
-    creator_profile_image: string;
-    title: string;
-    content: string;
-    price: number;
-    goal_amount: number;
-    end_date: string;
-    image: string;
-    category_name: string;
-    bank_name: string;
-    bank_account_number: string;
-    bank_account_owner:string;
+    is_paid: boolean | string;
+    payment_name : string;
+    name : string;
+    phone_number : number;
+    shipping_name : string;
+    shipping_phone_number : number;
+    shipping_address1 : string;
+    shipping_zipcode : number;
+    funding_item : string;
+    fundingPk? : string;
+    created_at: string;
+    updated_at: string;
 }
 
-export const uploadParticipants = (variables: IUploadParicipantsVariables, { queryKey }: QueryFunctionContext) => {
-    const [_, fundingPk] = queryKey;
+export const uploadParticipants = (variables: IUploadParicipantsVariables) => {
+    console.log("fundingPk3:", variables.fundingPk)
+    console.log("funding_item:", variables.funding_item)
+    
     return instance
-        .post(`funding-items/${fundingPk}/participants/`, variables, {
+        .post(`core/funding-items/${variables.funding_item}/participants`, variables, {
         headers: {
             "X-CSRFToken": Cookie.get("csrftoken") || "",
         },
         })
         .then((response) => response.data);
 }
+
 
 export interface IUploadFundingVariables {
     title: string;

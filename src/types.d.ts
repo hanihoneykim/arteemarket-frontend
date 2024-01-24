@@ -104,4 +104,8 @@ export interface IParticipant {
     bank_name: string;
     bank_account_number: string;
     bank_account_owner:string;
+    fundingPk : string;
+    created_at: string;
+    updated_at: string;
+
 }
