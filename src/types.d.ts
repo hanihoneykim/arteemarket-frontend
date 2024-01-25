@@ -138,3 +138,13 @@ export interface IFundingResponse {
     total_pages: number;
     results: IFundingItem[];
 }
+
+export interface ISaleResponse {
+    links: {
+        next: string | null;
+        previous: string | null;
+    };
+    count: number;
+    total_pages: number;
+    results: ISaleItem[];
+}

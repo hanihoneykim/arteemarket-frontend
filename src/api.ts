@@ -107,6 +107,8 @@ export const getFundingDetail = ({ queryKey }: QueryFunctionContext) => {
 
 export const getSaleItems = () => instance.get("core/sale-items").then(response => response.data);
 
+export const getMySaleItems = () => instance.get("core/sale-items/myitems").then(response => response.data);
+
 export const getSaleDetail = ({ queryKey }: QueryFunctionContext) => {
     const [_, salePk] = queryKey;
     return instance.get(`core/sale-items/${salePk}`).then((response) => response.data);

@@ -11,7 +11,7 @@ export default function MypageCategory() {
                     <Link to="/my-funding">
                         <Text color="rgba(0, 0, 0, 0.5)" fontSize={14} fontWeight={600} ml={6} >나의 펀딩</Text>
                     </Link>
-                    <Link to="/funding-items/category/subscription">
+                    <Link to="/my-sale">
                         <Text color="rgba(0, 0, 0, 0.5)" fontSize={14} fontWeight={600} ml={6} >나의 프리오더</Text>
                     </Link>
                     <Text color="rgba(0, 0, 0, 0.5)" fontSize={14} fontWeight={600} ml={6} >/</Text>
