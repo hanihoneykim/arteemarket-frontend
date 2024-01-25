@@ -102,15 +102,18 @@ export default function Header(){
                     ) : (
                         <Menu>
                             <MenuButton>
-                                <Avatar name={user?.name} src={user?.profile_image} size={"md"} />
+                                <HStack spacing={4}>
+                                    <Avatar name={user?.name} src="https://artee-s3-bucket.s3.ap-northeast-2.amazonaws.com/paint_icon_colored_orange_illustration.jpg" size={"md"} />
+                                    <Text fontSize={16} fontWeight={600}>{user?.nickname}</Text>
+                                </HStack>
                             </MenuButton>
                             <MenuList>
-                                <Link to={"/mypage"}>
-                                    <MenuItem>마이페이지</MenuItem>
+                                <Link to={"/my-funding"}>
+                                    <MenuItem>구매/판매 목록</MenuItem>
                                 </Link>
                                 <MenuItem onClick={onLogOut}>로그아웃</MenuItem>
                             </MenuList>
-                            </Menu>
+                        </Menu>
                     )
                 ) : null}
             </HStack>

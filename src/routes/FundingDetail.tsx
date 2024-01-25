@@ -33,7 +33,7 @@ export default function FundingDetail() {
 
                         <Text fontSize={20} fontWeight={"900"} my={6}>{data?.title}</Text>
                         <HStack>
-                            <Image w={"30px"} h={"30px"} borderRadius={50} src={data?.creator_profile_image || "https://artee-s3-bucket.s3.ap-northeast-2.amazonaws.com/usericon.png"} />
+                            <Image w={"30px"} h={"30px"} borderRadius={50} src="https://artee-s3-bucket.s3.ap-northeast-2.amazonaws.com/paint_icon_colored_orange_illustration.jpg" />
                             <Text fontSize="14" fontWeight={"500"} mt={1} color="gray">{data?.creator_nickname}</Text>
                         </HStack>
                         <HStack mt={6}>

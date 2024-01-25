@@ -83,11 +83,12 @@ export interface IUser {
     email: string;
     profile_image: string;
     name: string;
-    phone_number: number;
+    phone_number: string;
     is_admin: boolean;
     is_staff: boolean;
     is_superuser: boolean;
     date_joined: string;
+    password: string;
 }
 
 export interface IParticipant {
@@ -126,4 +127,14 @@ export interface IPurchase {
     bank_account_owner:string;
     fundingPk : string;
 
+}
+
+export interface IFundingResponse {
+    links: {
+        next: string | null;
+        previous: string | null;
+    };
+    count: number;
+    total_pages: number;
+    results: IFundingItem[];
 }
