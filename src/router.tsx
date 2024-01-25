@@ -20,6 +20,9 @@ import Login from "./routes/Login";
 import SignUp from "./routes/SignUp";
 import Participant from "./routes/Participant";
 import Purchase from "./routes/Purchase";
+import MyPage from "./routes/MyPage";
+import MyFunding from "./routes/MyFunding";
+
 
 const router = createBrowserRouter([{
     path:"/",
@@ -101,6 +104,14 @@ const router = createBrowserRouter([{
         {
             path:"signup",
             element:<SignUp />,
+        },
+        {
+            path:"mypage",
+            element:<MyPage />,
+        },
+        {
+            path:"my-funding",
+            element:<MyFunding />,
         },
         
     ]
