@@ -108,8 +108,8 @@ export default function Header(){
                                 </HStack>
                             </MenuButton>
                             <MenuList>
-                                <Link to={"/my-funding"}>
-                                    <MenuItem>구매/판매 목록</MenuItem>
+                                <Link to={"/mypage"}>
+                                    <MenuItem>마이페이지</MenuItem>
                                 </Link>
                                 <MenuItem onClick={onLogOut}>로그아웃</MenuItem>
                             </MenuList>

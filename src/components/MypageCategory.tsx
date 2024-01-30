@@ -7,7 +7,11 @@ export default function MypageCategory() {
         <>
             <VStack w="100%" display={"flex"} justifyContent={"center"}>
                 <HStack w="80%" h={16} alignItems={"center"} mt={2}>
-                    <Text fontSize={16} fontWeight={600} ml={2}>구매/판매 목록 ✨</Text>
+                    <Text fontSize={16} fontWeight={600} ml={2}>마이페이지 ✨</Text>
+                    <Link to="/mypage">
+                        <Text color="rgba(0, 0, 0, 0.5)" fontSize={14} fontWeight={600} ml={6} >내 정보</Text>
+                    </Link>
+                    <Text color="rgba(0, 0, 0, 0.5)" fontSize={14} fontWeight={600} ml={6} >/</Text>
                     <Link to="/my-funding">
                         <Text color="rgba(0, 0, 0, 0.5)" fontSize={14} fontWeight={600} ml={6} >나의 펀딩</Text>
                     </Link>

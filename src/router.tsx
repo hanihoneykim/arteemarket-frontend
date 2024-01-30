@@ -27,6 +27,7 @@ import MyParticipants from "./routes/mypage/MyParticipants";
 import MyParticipantDetail from "./routes/mypage/MyParticipantsDetail";
 import MyPurchases from "./routes/mypage/MyPurchases";
 import MyPurchaseDetail from "./routes/mypage/MyPurchaseDetail";
+import MyPageEdit from "./routes/mypage/MyPageEdit";
 
 
 const router = createBrowserRouter([{
@@ -113,6 +114,10 @@ const router = createBrowserRouter([{
         {
             path:"mypage",
             element:<MyPage />,
+        },
+        {
+            path:"mypage/edit",
+            element:<MyPageEdit />,
         },
         {
             path:"my-funding",
