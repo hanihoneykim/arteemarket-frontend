@@ -26,6 +26,7 @@ import MySale from "./routes/mypage/MySale";
 import MyParticipants from "./routes/mypage/MyParticipants";
 import MyParticipantDetail from "./routes/mypage/MyParticipantsDetail";
 import MyPurchases from "./routes/mypage/MyPurchases";
+import MyPurchaseDetail from "./routes/mypage/MyPurchaseDetail";
 
 
 const router = createBrowserRouter([{
@@ -132,6 +133,10 @@ const router = createBrowserRouter([{
         {
             path:"my-purchases",
             element:<MyPurchases />,
+        },
+        {
+            path:"my-purchases/:purchasePk",
+            element:<MyPurchaseDetail />,
         },
         
     ]

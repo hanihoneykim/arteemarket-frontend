@@ -203,7 +203,7 @@ export const uploadPurchases = (variables: IUploadPurchasesVariables) => {
 
 export const getMyPurchases = () => instance.get("user/my-purchases").then(response => response.data);
 
-export const getPurchseDetail = ({ queryKey }: QueryFunctionContext) => {
+export const getPurchaseDetail = ({ queryKey }: QueryFunctionContext) => {
     const [_, PurchasePk] = queryKey;
     return instance.get(`user/my-purchases/${PurchasePk}`).then((response) => response.data);
 };

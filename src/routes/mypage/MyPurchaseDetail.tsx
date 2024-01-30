@@ -1,15 +1,15 @@
 import { Alert, AlertIcon, AlertTitle, Box, Card, CardHeader, Divider, Flex, FormLabel, Grid, Spinner, Stack, Text, VStack } from "@chakra-ui/react";
 import MypageCategory from "../../components/MypageCategory";
 import { useQuery } from "@tanstack/react-query";
-import { IMyParticipant, IMyParticipantsResponse, IParticipant } from "../../types";
-import { getParticipantDetail } from "../../api";
+import { IMyParticipant, IMyParticipantsResponse, IMyPurchase, IParticipant } from "../../types";
+import { getPurchaseDetail } from "../../api";
 import MyParticipantsFunding from "../../components/MyParticipantsFunding";
 import { Link, useParams } from "react-router-dom";
 
 
-export default function MyParticipantDetail() {
-    const { participantPk } = useParams();
-    const { isLoading, data } = useQuery<IMyParticipant>(["MyParticipantDetail", participantPk], getParticipantDetail);
+export default function MyPurchaseDetail() {
+    const { purchasePk } = useParams();
+    const { isLoading, data } = useQuery<IMyPurchase>(["MyPurchaseDetail", purchasePk], getPurchaseDetail);
 
     if (isLoading) {
         return (
@@ -73,11 +73,11 @@ export default function MyParticipantDetail() {
                         </CardHeader>
                     </Card>
                     <Divider my={8}/>
-                    <FormLabel>펀딩 상품 바로가기 (클릭)</FormLabel>
+                    <FormLabel>프리오더 상품 바로가기 (클릭)</FormLabel>
                     <Card align='center' w="80%" bgColor={"orange"}>
-                        <Link to={`/funding-items/${data?.funding_item.id}`}>
+                        <Link to={`/sale-items/${data?.sale_item.id}`}>
                             <CardHeader>
-                                <Text size='sm'>{data?.funding_item.title}</Text>
+                                <Text size='sm'>{data?.sale_item.title}</Text>
                             </CardHeader>
                         </Link>
                     </Card>
