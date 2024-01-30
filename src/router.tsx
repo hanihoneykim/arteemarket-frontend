@@ -24,6 +24,7 @@ import MyPage from "./routes/mypage/MyPage";
 import MyFunding from "./routes/mypage/MyFunding";
 import MySale from "./routes/mypage/MySale";
 import MyParticipants from "./routes/mypage/MyParticipants";
+import MyParticipantDetail from "./routes/mypage/MyParticipantsDetail";
 
 
 const router = createBrowserRouter([{
@@ -122,6 +123,10 @@ const router = createBrowserRouter([{
         {
             path:"my-participants",
             element:<MyParticipants />,
+        },
+        {
+            path:"my-participants/:participantPk",
+            element:<MyParticipantDetail />,
         },
         
     ]

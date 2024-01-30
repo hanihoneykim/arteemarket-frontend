@@ -138,6 +138,11 @@ export const getEventDetail = ({ queryKey }: QueryFunctionContext) => {
     return instance.get(`core/events/${eventPk}`).then((response) => response.data);
 };
 
+export const getParticipantDetail = ({ queryKey }: QueryFunctionContext) => {
+    const [_, participantPk] = queryKey;
+    return instance.get(`user/my-participants/${participantPk}`).then((response) => response.data);
+};
+
 
 export const getMyParticipants = () => instance.get("user/my-participants").then(response => response.data);
 
