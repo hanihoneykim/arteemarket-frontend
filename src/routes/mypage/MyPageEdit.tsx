@@ -1,10 +1,10 @@
 import { Box, Button, Card, CardHeader, Divider, FormControl, FormLabel, HStack, Heading, Input, Text, Textarea, VStack, useToast } from "@chakra-ui/react";
-import MypageCategory from "../components/MypageCategory";
+import MypageCategory from "../../components/MypageCategory";
 import { useForm } from "react-hook-form";
-import ProtectedPage from "../components/ProtectedPage";
+import ProtectedPage from "../../components/ProtectedPage";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { IUser } from "../types";
-import { IEmailSignupVariables, IUploadMypageVariables, emailSignup, getMyProfile, uploadMypage } from "../api";
+import { IUser } from "../../types";
+import { IEmailSignupVariables, IUploadMypageVariables, emailSignup, getMyProfile, uploadMypage } from "../../api";
 
 interface IForm {
     email: string;

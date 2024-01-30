@@ -20,9 +20,9 @@ import Login from "./routes/Login";
 import SignUp from "./routes/SignUp";
 import Participant from "./routes/Participant";
 import Purchase from "./routes/Purchase";
-import MyPage from "./routes/MyPage";
-import MyFunding from "./routes/MyFunding";
-import MySale from "./routes/MySale";
+import MyPage from "./routes/mypage/MyPage";
+import MyFunding from "./routes/mypage/MyFunding";
+import MySale from "./routes/mypage/MySale";
 
 
 const router = createBrowserRouter([{

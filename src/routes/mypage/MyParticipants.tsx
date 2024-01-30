@@ -1,11 +1,11 @@
 import { Alert, AlertIcon, AlertTitle, Box, Flex, Grid, Spinner, Stack, Text } from "@chakra-ui/react";
-import MypageCategory from "../components/MypageCategory";
+import MypageCategory from "../../components/MypageCategory";
 import { useQuery } from "@tanstack/react-query";
-import { IFundingItem, IFundingResponse } from "../types";
-import { getMyFundingItems } from "../api";
-import HomeFunding from "../components/HomeFunding";
+import { IFundingItem, IFundingResponse } from "../../types";
+import { getMyFundingItems } from "../../api";
+import HomeFunding from "../../components/HomeFunding";
 
-export default function MyFunding() {
+export default function MyParticipants() {
     const { isLoading, data } = useQuery<IFundingResponse>(["MyFundingList"], getMyFundingItems);
     const myfunding = data?.results || [];
 

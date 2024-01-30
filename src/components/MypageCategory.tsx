@@ -15,10 +15,10 @@ export default function MypageCategory() {
                         <Text color="rgba(0, 0, 0, 0.5)" fontSize={14} fontWeight={600} ml={6} >나의 프리오더</Text>
                     </Link>
                     <Text color="rgba(0, 0, 0, 0.5)" fontSize={14} fontWeight={600} ml={6} >/</Text>
-                    <Link to="/funding-items/category/food">
+                    <Link to="/my-participants">
                         <Text color="rgba(0, 0, 0, 0.5)" fontSize={14} fontWeight={600} ml={6} >펀딩 신청목록</Text>
                     </Link>
-                    <Link to="/funding-items/category/interior">
+                    <Link to="/my-purchases">
                         <Text color="rgba(0, 0, 0, 0.5)" fontSize={14} fontWeight={600} ml={6} >프리오더 구매목록</Text>
                     </Link>
                 </HStack>
