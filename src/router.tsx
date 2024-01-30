@@ -25,6 +25,7 @@ import MyFunding from "./routes/mypage/MyFunding";
 import MySale from "./routes/mypage/MySale";
 import MyParticipants from "./routes/mypage/MyParticipants";
 import MyParticipantDetail from "./routes/mypage/MyParticipantsDetail";
+import MyPurchases from "./routes/mypage/MyPurchases";
 
 
 const router = createBrowserRouter([{
@@ -127,6 +128,10 @@ const router = createBrowserRouter([{
         {
             path:"my-participants/:participantPk",
             element:<MyParticipantDetail />,
+        },
+        {
+            path:"my-purchases",
+            element:<MyPurchases />,
         },
         
     ]

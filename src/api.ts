@@ -201,6 +201,12 @@ export const uploadPurchases = (variables: IUploadPurchasesVariables) => {
         .then((response) => response.data);
 }
 
+export const getMyPurchases = () => instance.get("user/my-purchases").then(response => response.data);
+
+export const getPurchseDetail = ({ queryKey }: QueryFunctionContext) => {
+    const [_, PurchasePk] = queryKey;
+    return instance.get(`user/my-purchases/${PurchasePk}`).then((response) => response.data);
+};
 
 export interface IUploadFundingVariables {
     title: string;

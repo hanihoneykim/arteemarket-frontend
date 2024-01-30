@@ -131,6 +131,28 @@ export interface IMyParticipant {
 
 }
 
+export interface IMyPurchase {
+    id: string;
+    is_paid: boolean | string;
+    payment_name : string;
+    name : string;
+    phone_number : number;
+    shipping_name : string;
+    shipping_phone_number : number;
+    shipping_address1 : string;
+    shipping_zipcode : number;
+    fundingPk? : string;
+    created_at: string;
+    updated_at: string;
+    sale_item : {
+        id: string;
+        title: string;
+        image: string;
+        price: number; 
+    }
+
+}
+
 export interface IPurchase {
     id: string;
     creator_nickname: string;
@@ -177,4 +199,14 @@ export interface IMyParticipantsResponse {
     count: number;
     total_pages: number;
     results: IMyParticipant[];
+}
+
+export interface IMyPurchaseResponse {
+    links: {
+        next: string | null;
+        previous: string | null;
+    };
+    count: number;
+    total_pages: number;
+    results: IMyPurchase[];
 }
