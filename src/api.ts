@@ -138,6 +138,10 @@ export const getEventDetail = ({ queryKey }: QueryFunctionContext) => {
     return instance.get(`core/events/${eventPk}`).then((response) => response.data);
 };
 
+
+export const getMyParticipants = () => instance.get("user/my-participants").then(response => response.data);
+
+
 export interface IUploadParicipantsVariables {
     id: string;
     is_paid: boolean | string;

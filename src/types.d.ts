@@ -93,21 +93,41 @@ export interface IUser {
 
 export interface IParticipant {
     id: string;
-    creator_nickname: string;
-    creator_profile_image: string;
-    title: string;
-    content: string;
-    price: number;
-    goal_amount: number;
-    end_date: string;
-    image: string;
-    category_name: string;
-    bank_name: string;
-    bank_account_number: string;
-    bank_account_owner:string;
-    fundingPk : string;
+    is_paid: boolean | string;
+    payment_name : string;
+    name : string;
+    phone_number : number;
+    shipping_name : string;
+    shipping_phone_number : number;
+    shipping_address1 : string;
+    shipping_zipcode : number;
+    funding_item : string;
+    fundingPk? : string;
     created_at: string;
     updated_at: string;
+
+}
+
+export interface IMyParticipant {
+    id: string;
+    is_paid: boolean | string;
+    payment_name : string;
+    name : string;
+    phone_number : number;
+    shipping_name : string;
+    shipping_phone_number : number;
+    shipping_address1 : string;
+    shipping_zipcode : number;
+    fundingPk? : string;
+    created_at: string;
+    updated_at: string;
+    funding_item : {
+        id: string;
+        title: string;
+        image: string;
+        current_percentage: number;
+        
+    }
 
 }
 
@@ -147,4 +167,14 @@ export interface ISaleResponse {
     count: number;
     total_pages: number;
     results: ISaleItem[];
+}
+
+export interface IMyParticipantsResponse {
+    links: {
+        next: string | null;
+        previous: string | null;
+    };
+    count: number;
+    total_pages: number;
+    results: IMyParticipant[];
 }

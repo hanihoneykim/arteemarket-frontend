@@ -1,13 +1,13 @@
 import { Alert, AlertIcon, AlertTitle, Box, Flex, Grid, Spinner, Stack, Text } from "@chakra-ui/react";
 import MypageCategory from "../../components/MypageCategory";
 import { useQuery } from "@tanstack/react-query";
-import { IFundingItem, IFundingResponse } from "../../types";
-import { getMyFundingItems } from "../../api";
-import HomeFunding from "../../components/HomeFunding";
+import { IMyParticipant, IMyParticipantsResponse, IParticipant } from "../../types";
+import { getMyParticipants } from "../../api";
+import MyParticipantsFunding from "../../components/MyParticipantsFunding";
 
 export default function MyParticipants() {
-    const { isLoading, data } = useQuery<IFundingResponse>(["MyFundingList"], getMyFundingItems);
-    const myfunding = data?.results || [];
+    const { isLoading, data } = useQuery<IMyParticipantsResponse>(["MyParticipantsList"], getMyParticipants);
+    const myparticipants = data?.results || [];
 
     if (isLoading) {
         return (
@@ -25,7 +25,7 @@ export default function MyParticipants() {
             <>
                 <MypageCategory />
                 <Box p={16} h="500px" display={"flex"} alignItems={"center"} justifyContent={"center"}>
-                    <Text color="orange" fontWeight={"bold"} fontSize="md">등록한 펀딩 목록이 없습니다.</Text>
+                    <Text color="orange" fontWeight={"bold"} fontSize="md">등록한 펀딩 신청 목록이 없습니다.</Text>
                 </Box>
             </>
         );
@@ -35,10 +35,11 @@ export default function MyParticipants() {
         <>
         <MypageCategory />
 
-        <Box mb={40} pt={16} pl={20} pr={20} w="100%" h="300px">
+        <Box mb={64} pt={12} pl={20} pr={20} w="100%" h="300px">
+            <Text ml={4} fontWeight={"bold"} fontSize="lg" mb={14}>펀딩 신청목록</Text>
             <Grid gap={10} gridAutoFlow={"row"} templateColumns={"repeat(4,1fr)"}>
-                {myfunding.map((funding: IFundingItem, index: number) => (
-                    <HomeFunding id={funding.id} image={funding.image} current_percentage={funding.current_percentage} title={funding.title} />
+                {myparticipants.map((myparticipants: IMyParticipant, index: number) => (
+                    <MyParticipantsFunding id={myparticipants.id} image={myparticipants.funding_item.image} current_percentage={myparticipants.funding_item.current_percentage} title={myparticipants.funding_item.title} />
                 ))}
             </Grid>
         </Box>
