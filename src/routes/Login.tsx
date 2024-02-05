@@ -2,7 +2,7 @@ import { Box, Button, Divider, FormControl, FormLabel, HStack, Image, Input, Tex
 import ProtectedPage from "../components/ProtectedPage";
 import { useForm } from "react-hook-form";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react"; 
 import {
     IEmailLoginError,
@@ -17,6 +17,12 @@ interface IForm {
 }
 
 export default function Login() {
+    const kakaoParams = {
+        client_id:"1bce7b8ba49556b21c8e728a30c4f0bd",
+        redirect_uri:"http://127.0.0.1:3000/social/kakao",
+        response_type:"code",
+    }
+    const params = new URLSearchParams(kakaoParams).toString();
     const {
         register,
         handleSubmit,
@@ -31,7 +37,7 @@ export default function Login() {
                     title: "welcome back!",
                     status: "success",
                 });
-                queryClient.refetchQueries(["me"]);
+                queryClient.refetchQueries(["myprofile"]);
                 reset();
                 localStorage.setItem("isUserLoggedIn", "true");
                 navigate("/");
@@ -71,7 +77,9 @@ export default function Login() {
                 <Divider mt={8} mb={4} />
                 <HStack spacing={6}>
                     <Image w={12} h={12} borderRadius={50} src="https://artee-s3-bucket.s3.ap-northeast-2.amazonaws.com/naver.png" />
-                    <Image w={12} h={12} borderRadius={50} src="https://artee-s3-bucket.s3.ap-northeast-2.amazonaws.com/kakao.png" />
+                    <Link to={`https://kauth.kakao.com/oauth/authorize?${params}`} >
+                        <Image w={12} h={12} borderRadius={50} src="https://artee-s3-bucket.s3.ap-northeast-2.amazonaws.com/kakao.png" />
+                    </Link>
                 </HStack>
                 
             </VStack>

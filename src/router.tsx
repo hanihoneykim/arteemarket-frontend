@@ -28,6 +28,7 @@ import MyParticipantDetail from "./routes/mypage/MyParticipantsDetail";
 import MyPurchases from "./routes/mypage/MyPurchases";
 import MyPurchaseDetail from "./routes/mypage/MyPurchaseDetail";
 import MyPageEdit from "./routes/mypage/MyPageEdit";
+import KakaoConfirm from "./routes/KakaoConfirm";
 
 
 const router = createBrowserRouter([{
@@ -106,6 +107,15 @@ const router = createBrowserRouter([{
         {
             path:"login",
             element:<Login />,
+        },
+        {
+            path:"social",
+            children:[
+                {
+                    path:"kakao",
+                    element: <KakaoConfirm />,
+                }
+            ]
         },
         {
             path:"signup",

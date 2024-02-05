@@ -41,6 +41,20 @@ export const emailLogIn = ({ email, password }: IEmailLoginVariables) =>
         return response.data;
     });
 
+    export const kakaoLogIn = (code:string) => instance.post(`user/social/kakao`, { code }, {
+        headers: {
+            "X-CSRFToken": Cookie.get("csrftoken") || "",
+        },
+    }).then((response) => {
+        // 로그인 성공 시에 얻은 토큰을 저장
+        const token = response.data.token;
+        Cookie.set("token", token);
+        console.log(Cookie.get("token"))
+        console.log("response.data:", response.data)
+        return response.data;
+    }
+    );
+
 export const logOut = () =>
     instance
         .post(`user/logout`, null, {

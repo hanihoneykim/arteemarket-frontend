@@ -103,7 +103,7 @@ export default function Header(){
                         <Menu>
                             <MenuButton>
                                 <HStack spacing={4}>
-                                    <Avatar name={user?.name} src="https://artee-s3-bucket.s3.ap-northeast-2.amazonaws.com/paint_icon_colored_orange_illustration.jpg" size={"md"} />
+                                    <Avatar src="https://artee-s3-bucket.s3.ap-northeast-2.amazonaws.com/paint_icon_colored_orange_illustration.jpg" size={"md"} />
                                     <Text fontSize={16} fontWeight={600}>{user?.nickname}</Text>
                                 </HStack>
                             </MenuButton>

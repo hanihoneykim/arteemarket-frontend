@@ -36,7 +36,7 @@ export default function MyPurchases() {
         <MypageCategory />
 
         <Box mb={64} pt={12} pl={20} pr={20} w="100%" h="300px">
-            <Text ml={4} fontWeight={"bold"} fontSize="lg" mb={14}>펀딩 신청목록</Text>
+            <Text ml={4} fontWeight={"bold"} fontSize="lg" mb={14}>프리오더 구매목록</Text>
             <Grid gap={10} gridAutoFlow={"row"} templateColumns={"repeat(4,1fr)"}>
                 {mypurchases.map((mypurchases: IMyPurchase, index: number) => (
                     <MyPurchasesSale id={mypurchases.id} image={mypurchases.sale_item.image} title={mypurchases.sale_item.title} price={mypurchases.sale_item.price} />
