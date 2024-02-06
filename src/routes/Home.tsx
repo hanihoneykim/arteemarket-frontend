@@ -47,7 +47,7 @@ export default function Home() {
                 <Box w="80%" h="100%" mt={20} mb={56} display={"flex"} justifyContent={"flex-start"}>
                     <VStack alignItems={"flex-start"} w="100%">
                         <Text fontSize={30} fontWeight={"bold"} mb={4}>신규 펀딩</Text>
-                        <HStack spacing={4} alignItems="flex-start" flexWrap="wrap">
+                        <HStack spacing={4} ml={10} alignItems="flex-start" flexWrap="wrap">
                             {fundingData && fundingData.map((funding, index) => (
                                 <VStack key={index} w="calc(25% - 16px)" p={2}>
                                     <HomeFunding id={funding.id} image={funding.image} current_percentage={funding.current_percentage} title={funding.title} />
