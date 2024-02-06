@@ -4,7 +4,7 @@ import { MutationFunction, QueryFunctionContext } from "@tanstack/react-query";
 import { IParticipant } from "./types";
 
 const instance = axios.create({
-    baseURL:"http://127.0.0.1:8000/",
+    baseURL: process.env.NODE_ENV === "development" ? "http://127.0.0.1:8000/" : "https://arteemarket-backend.onrender.com"
 })
 
 instance.defaults.headers.common['Authorization'] = `Bearer ${Cookie.get("token") || ""}`;
