@@ -53,11 +53,6 @@ export default function SignUp() {
                 <Button type="submit" mt={4} colorScheme={"orange"} w="100%" h={12}>
                     회원가입
                 </Button>
-                <Divider mt={8} mb={4} />
-                <HStack spacing={6}>
-                    <Image w={12} h={12} borderRadius={50} src="https://artee-s3-bucket.s3.ap-northeast-2.amazonaws.com/naver.png" />
-                    <Image w={12} h={12} borderRadius={50} src="https://artee-s3-bucket.s3.ap-northeast-2.amazonaws.com/kakao.png" />
-                </HStack>
                 
             </VStack>
         </Box>

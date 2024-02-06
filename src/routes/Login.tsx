@@ -19,7 +19,7 @@ interface IForm {
 export default function Login() {
     const kakaoParams = {
         client_id:"1bce7b8ba49556b21c8e728a30c4f0bd",
-        redirect_uri:"http://127.0.0.1:3000/social/kakao",
+        redirect_uri:"https://www.arteemarket.xyz/social/kakao",
         response_type:"code",
     }
     const params = new URLSearchParams(kakaoParams).toString();
@@ -76,7 +76,7 @@ export default function Login() {
                 </Button>
                 <Divider mt={8} mb={4} />
                 <HStack spacing={6}>
-                    <Image w={12} h={12} borderRadius={50} src="https://artee-s3-bucket.s3.ap-northeast-2.amazonaws.com/naver.png" />
+                    {/* <Image w={12} h={12} borderRadius={50} src="https://artee-s3-bucket.s3.ap-northeast-2.amazonaws.com/naver.png" /> */}
                     <Link to={`https://kauth.kakao.com/oauth/authorize?${params}`} >
                         <Image w={12} h={12} borderRadius={50} src="https://artee-s3-bucket.s3.ap-northeast-2.amazonaws.com/kakao.png" />
                     </Link>
