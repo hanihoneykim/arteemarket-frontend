@@ -15,7 +15,7 @@ export default function SaleDetail() {
         <Box mb={40} w="100%" h="100%" px={24} my={20}>
             <HStack w="100%" h="100%" display={"flex"}>
                 <VStack id="mainBox" w="60%" h="100%" justifyContent={"flex-start"} align={"start"} position="relative">
-                    <Image objectFit={"cover"} w={"100%"} h={"500px"} src={data?.image} />
+                    <Image objectFit={"cover"} w={"100%"} h={"700px"} src={data?.image} />
                     <Text mt={10} fontSize={16} fontWeight={"500"} mb={56}>
                         {data?.content.split('\n').map((line, index) => (
                             <React.Fragment key={index}>

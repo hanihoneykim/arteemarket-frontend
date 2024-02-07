@@ -15,7 +15,7 @@ export default function FundingDetail() {
         <Box mb={40} w="100%" h="100%" px={24} my={20}>
             <HStack w="100%" h="100%" display={"flex"}>
                 <VStack id="mainBox" w="60%" h="100%" justifyContent={"flex-start"} align={"start"} position="relative">
-                    <Image objectFit={"cover"} w={"100%"} h={"500px"} src={data?.image} />
+                    <Image objectFit={"cover"} w={"100%"} h={"700px"} src={data?.image} />
                     <Text mt={10} fontSize={16} fontWeight={"500"} mb={56}>
                         {data?.content.split('\n').map((line, index) => (
                             <React.Fragment key={index}>
@@ -38,7 +38,7 @@ export default function FundingDetail() {
                         </HStack>
                         <HStack mt={6}>
                             <Text color="orange" fontSize={26} fontWeight={"900"}>{data?.current_percentage}</Text>
-                            <Text color="orange" fontSize={16} fontWeight={"600"}>달성</Text>
+                            <Text color="orange" fontSize={16} fontWeight={"600"}>% 달성</Text>
                         </HStack>
                         <HStack mt={2}>
                             <Text fontSize={26} fontWeight={"900"}>{data?.current_amount}</Text>
